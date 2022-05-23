@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+
+	<!-- This requires ESRI servers to be running and for the maps/dashboard's user to set everyhting to public since it pulls the map from thier servers.-->
+
+	<style>
+		* {
+			height: 100%;
+			width: 100%;
+			padding: 0;
+			margin: 0;
+			border: 0;
+		}
+
+		body {
+			background-attachment: fixed;
+			background-size: 100% auto;
+		}
+
+		.blended_grid {
+			display: block;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			margin: 0px auto 0 auto;
+		}
+
+		.pageContent {
+			background-color: rgba(0, 0, 0, 0.5);
+			float: left;
+			clear: none;
+			height: 80%;
+			width: 100%;
+		}
+
+		.pageFooter {
+			background-color: rgba(240, 225, 14, 0.5);
+			float: left;
+			clear: none;
+			height: 5%;
+			width: 100%;
+		}
+
+	</style>
+
+	<title>Map of Demographics and Leisure in NYC</title>
+
+	<script>
+
+	</script>
+
+</head>
+
+<body>
+	<div class="blended_grid">
+		<div class="pageContent"> 
+            <style>
+            </style>
+            <div class="embed-container">
+                <iframe width="100%" height="80%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="leisuremap" src="https://www.arcgis.com/apps/dashboards/3ae988ad0c2546429b375c919e77bf62">
+                </iframe>
+            </div> 
+        </div>
+		<div class="pageFooter">
+			<div class="w3-bar w3-indigo w3-monospace">
+                <button class="w3-bar-item w3-button tablink w3-cyan" onclick="openTab(event,'Info')">Info</button>
+				<button class="w3-bar-item w3-button tablink" onclick="openTab(event,'Functions')">Functions</button>
+				<button class="w3-bar-item w3-button tablink" onclick="openTab(event,'Sources')">Sources</button>
+				<button class="w3-bar-item w3-button tablink" onclick="openTab(event,'Author')">Author</button>
+            </div>
+            
+            <div id="Info" class="w3-container tab w3-monospace">
+                <h2>Overview</h2>
+                <p>This is a dashboard displaying some leisure activities in NYC. The base layer for the first map is for population and the other is for houshold income.
+				The function of this dashboard is to provide the user with an overview of local features, demography, and basic income stats in order to inform decisions for development/ buisness ventures/ other
+				entrepreneurial activities.</p>
+            </div>
+            
+			<div id="Functions" class="w3-container tab w3-monospace" style="display:none">
+				<p>Economic and population statistics are from 2021. The Pie Chart on the Income tab shows the number of zips belonging to each borough and when hovered over, displays avg per capita income in each.</p>
+                <p>The colored indicator on the Income map tab tells the user whether the selected ZIP is a suitable place for development based on the metrics of household income and population,
+					with a high income (> $65k) and high population (>60k) being marked as 'good' and a high income and low population still being suitable. A low income and high pop is 'decent' and a zip with both low population
+					and low income is unfavorable.</p>
+            </div>
+
+			<div id="Sources" class="w3-container tab w3-monospace" style="display:none">
+				<p>No Data is my own and each belongs to their respective owners, mostly NYC's open data platform and NYU's data archives.</p>
+                <p>https://data.cityofnewyork.us/Recreation/New-York-City-Museums/ekax-ky3z || https://data.cityofnewyork.us/Transportation/New-York-City-Bike-Routes/7vsa-caz7 || https://data.cityofnewyork.us/Recreation/Theaters/kdu2-865w ||
+					https://data.cityofnewyork.us/Recreation/Open-Space-Parks-/g84h-jbjm || https://archive.nyu.edu/handle/2451/34635 || https://data.cityofnewyork.us/Health/Modified-Zip-Code-Tabulation-Areas-MODZCTA-/pri4-ifjk || https://data.cityofnewyork.us/Social-Services/Demographics-by-Zip-Code/hebw-6hze </p>
+            </div>
+
+			<div id="Author" class="w3-container tab w3-monospace" style="display:none">
+                <h2>About the 'author'</h2>
+                <p>Rivera, Francisco - CUNY Hunter College, WebGIS 78534 Spring 2022. Questions, comments, concerns? Email: francisco.rivera58@myhunter.cuny.edu</p>
+            </div>
+		</div>
+	</div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, x, tabChoose;
+            x = document.getElementsByClassName("tab");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";  
+        }
+        tabChoose = document.getElementsByClassName("tablink");
+        for (i = 0; i < x.length; i++) {
+            tabChoose[i].className = tabChoose[i].className.replace("w3-cyan", "");
+        }
+    
+        document.getElementById(tabName).style.display = "block";
+        event.currentTarget.className += " w3-cyan";  
+    }
+    </script>
+</body>
+
+</html>
